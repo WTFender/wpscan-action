@@ -1,0 +1,14 @@
+name: 'WP Scan'
+description: 'wpscan a URL'
+inputs:
+  target-url:  # id of input
+    description: 'URL to scan'
+    required: true
+outputs:
+  result:
+    description: 'Scan results'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.target-url }}
