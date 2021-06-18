@@ -1,10 +1,7 @@
 #!/bin/sh
 
-/usr/local/bundle/wpscan --update
-
-curl $1
-
-/usr/local/bundle/wpscan --disable-tls-checks --url $1 --api-token $2 -f json -o result.json
+/usr/local/bundle/bin/wpscan --update
+/usr/local/bundle/bin/wpscan --disable-tls-checks --url $1 --api-token $2 -f json -o result.json
 
 RESULT=$(cat result.json | base64)
 
