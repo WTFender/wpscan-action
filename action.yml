@@ -11,6 +11,9 @@ inputs:
     description: 'WPScan options'
     required: false
     default: '--disable-tls-checks'
+  webhook:
+    description: 'Slack webhook URL'
+    required: false
 outputs:
   result:
     description: 'JSON scan results'
