@@ -1,11 +1,11 @@
 #!/bin/sh
+$WPSCAN=/usr/local/bundle/bin/wpscan
 
-/usr/local/bundle/bin/wpscan --update
+$WPSCAN --update
 
-curl -s $1
+RESULT=$($WPSCAN --disable-tls-checks --url $1 --api-token $2 -f json)
 
-/usr/local/bundle/bin/wpscan --disable-tls-checks --url $1 --api-token $2 -f json -o result.json
-
-RESULT=$(cat result.json | base64)
+RESULT_B64=$(echo $RESULT | base64)
 
 echo ::set-output name=result::$RESULT
+echo ::set-output name=resultb64::$RESULT_B64

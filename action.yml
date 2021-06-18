@@ -10,6 +10,8 @@ inputs:
 outputs:
   result:
     description: 'JSON scan results'
+  resultb64:
+    description: 'JSON scan results encoded in base64'
 runs:
   using: 'docker'
   image: 'Dockerfile'
