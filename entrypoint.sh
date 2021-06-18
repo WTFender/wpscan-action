@@ -1,5 +1,5 @@
 #!/bin/sh
-$WPSCAN=/usr/local/bundle/bin/wpscan
+WPSCAN=/usr/local/bundle/bin/wpscan
 
 $WPSCAN --update
 
