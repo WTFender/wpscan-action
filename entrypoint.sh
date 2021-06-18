@@ -9,3 +9,4 @@ curl $1
 RESULT=$(cat result.json | base64)
 
 echo ::set-output name=result::$RESULT
+
