@@ -16,6 +16,3 @@ jobs:
           url: 'https://www.shanghaimansion.com/'
 #          token: ${{ secrets.WPSCAN_TOKEN }}
           webhook: ${{ secrets.SLACK_WEBHOOK }}
-      - name: Results
-        run: |
-          echo "${{ steps.wpscan.outputs.resultb64 }}"
