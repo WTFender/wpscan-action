@@ -4,5 +4,5 @@ COPY example.json /example.json
 COPY webhook.py /webhook.py
 USER root
 RUN apk add curl python3
-RUN pip3 install requests
+RUN pip install requests
 ENTRYPOINT ["/entrypoint.sh"]
