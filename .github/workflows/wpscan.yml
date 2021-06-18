@@ -1,16 +1,18 @@
-on: [push]
+on: workflow_dispatch
 
 jobs:
-  hello_world_job:
+  wpscan:
     runs-on: ubuntu-latest
-    name: WP Scan
+    name: WPScan
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Scan
-        uses: ./ # Uses an action in the root directory
+        uses: ./
         id: wpscan
         with:
-          target-url: 'https://wtfender.com'
+          url: 'https://wtfender.com'
+          token: ${{ secrets.WPSCAN_TOKEN }}
       - name: Results
-        run: echo "Result - ${{ steps.wpscan.outputs.result }}"
+        run: |
+          echo "Result - ${{ steps.wpscan.outputs.result }}"

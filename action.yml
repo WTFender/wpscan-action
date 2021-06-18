@@ -1,14 +1,18 @@
-name: 'WP Scan'
-description: 'wpscan a URL'
+name: 'WPScan'
+description: 'WPScan a URL'
 inputs:
-  target-url:  # id of input
-    description: 'URL to scan'
+  url:
+    description: 'Target URL to scan'
+    required: true
+  token:
+    description: 'API token for wpscan.com'
     required: true
 outputs:
   result:
-    description: 'Scan results'
+    description: 'JSON scan results'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.target-url }}
+    - ${{ inputs.url }}
+    - ${{ inputs.token }}
