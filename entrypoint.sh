@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/sh
 
 /usr/local/bundle/wpscan --update
 
@@ -9,4 +9,3 @@ curl $1
 RESULT=$(cat result.json | base64)
 
 echo ::set-output name=result::$RESULT
-
