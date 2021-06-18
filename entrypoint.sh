@@ -4,7 +4,7 @@
 # $2 TOKEN
 # $3 OPTIONS
 
-ARGS="--disable-tls-checks -f json --url ${1}"
+ARGS="-f json --url ${1}"
 [  -z "$2" ] && ARGS="${ARGS} --api-token=${2}"
 [  -z "$3" ] && ARGS="${ARGS} ${3}"
 

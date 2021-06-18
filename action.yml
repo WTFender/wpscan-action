@@ -6,7 +6,11 @@ inputs:
     required: true
   token:
     description: 'API token for wpscan.com'
-    required: true
+    required: false
+  options:
+    description: 'WPScan options'
+    required: false
+    default: '--disable-tls-checks'
 outputs:
   result:
     description: 'JSON scan results'
@@ -18,3 +22,4 @@ runs:
   args:
     - ${{ inputs.url }}
     - ${{ inputs.token }}
+    - ${{ inputs.options }}
