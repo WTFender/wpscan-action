@@ -1,0 +1,433 @@
+{
+    "banner": {
+      "description": "WordPress Security Scanner by the WPScan Team",
+      "version": "3.8.18",
+      "authors": [
+        "@_WPScan_",
+        "@ethicalhack3r",
+        "@erwan_lr",
+        "@firefart"
+      ],
+      "sponsor": "Sponsored by Automattic - https://automattic.com/"
+    },
+    "start_time": 1624031023,
+    "start_memory": 45113344,
+    "target_url": "https://www.dummyscan.com/",
+    "target_ip": "162.214.66.51",
+    "effective_url": "https://www.dummyscan.com/",
+    "interesting_findings": [
+      {
+        "url": "https://www.dummyscan.com/",
+        "to_s": "Headers",
+        "type": "headers",
+        "found_by": "Headers (Passive Detection)",
+        "confidence": 100,
+        "confirmed_by": {
+  
+        },
+        "references": {
+  
+        },
+        "interesting_entries": [
+          "Server: Apache"
+        ]
+      },
+      {
+        "url": "https://www.dummyscan.com/system/xmlrpc.php",
+        "to_s": "XML-RPC seems to be enabled: https://www.dummyscan.com/system/xmlrpc.php",
+        "type": "xmlrpc",
+        "found_by": "Direct Access (Aggressive Detection)",
+        "confidence": 100,
+        "confirmed_by": {
+  
+        },
+        "references": {
+          "url": [
+            "http://codex.wordpress.org/XML-RPC_Pingback_API"
+          ],
+          "metasploit": [
+            "auxiliary/scanner/http/wordpress_ghost_scanner",
+            "auxiliary/dos/http/wordpress_xmlrpc_dos",
+            "auxiliary/scanner/http/wordpress_xmlrpc_login",
+            "auxiliary/scanner/http/wordpress_pingback_access"
+          ]
+        },
+        "interesting_entries": [
+  
+        ]
+      },
+      {
+        "url": "https://www.dummyscan.com/system/readme.html",
+        "to_s": "WordPress readme found: https://www.dummyscan.com/system/readme.html",
+        "type": "readme",
+        "found_by": "Direct Access (Aggressive Detection)",
+        "confidence": 100,
+        "confirmed_by": {
+  
+        },
+        "references": {
+  
+        },
+        "interesting_entries": [
+  
+        ]
+      },
+      {
+        "url": "https://www.dummyscan.com/system/wp-content/mu-plugins/",
+        "to_s": "This site has 'Must Use Plugins': https://www.dummyscan.com/system/wp-content/mu-plugins/",
+        "type": "mu_plugins",
+        "found_by": "Direct Access (Aggressive Detection)",
+        "confidence": 80,
+        "confirmed_by": {
+  
+        },
+        "references": {
+          "url": [
+            "http://codex.wordpress.org/Must_Use_Plugins"
+          ]
+        },
+        "interesting_entries": [
+  
+        ]
+      },
+      {
+        "url": "https://www.dummyscan.com/system/wp-content/uploads/",
+        "to_s": "Upload directory has listing enabled: https://www.dummyscan.com/system/wp-content/uploads/",
+        "type": "upload_directory_listing",
+        "found_by": "Direct Access (Aggressive Detection)",
+        "confidence": 100,
+        "confirmed_by": {
+  
+        },
+        "references": {
+  
+        },
+        "interesting_entries": [
+  
+        ]
+      },
+      {
+        "url": "https://www.dummyscan.com/system/wp-cron.php",
+        "to_s": "The external WP-Cron seems to be enabled: https://www.dummyscan.com/system/wp-cron.php",
+        "type": "wp_cron",
+        "found_by": "Direct Access (Aggressive Detection)",
+        "confidence": 60,
+        "confirmed_by": {
+  
+        },
+        "references": {
+          "url": [
+            "https://www.iplocation.net/defend-wordpress-from-ddos",
+            "https://github.com/wpscanteam/wpscan/issues/1299"
+          ]
+        },
+        "interesting_entries": [
+  
+        ]
+      }
+    ],
+    "version": {
+      "number": "5.1.10",
+      "release_date": "2021-05-13",
+      "status": "latest",
+      "found_by": "Emoji Settings (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+        "https://www.dummyscan.com/, Match: '-release.min.js?ver=5.1.10'"
+      ],
+      "confirmed_by": {
+        "Most Common Wp Includes Query Parameter In Homepage (Passive Detection)": {
+          "confidence": 40,
+          "interesting_entries": [
+            "https://www.dummyscan.com/system/wp-includes/js/wp-embed.min.js?ver=5.1.10"
+          ]
+        }
+      },
+      "vulnerabilities": [
+  
+      ]
+    },
+    "main_theme": {
+      "slug": "shanghai",
+      "location": "https://www.dummyscan.com/system/wp-content/themes/shanghai/",
+      "latest_version": null,
+      "last_updated": null,
+      "outdated": false,
+      "readme_url": false,
+      "directory_listing": false,
+      "error_log_url": null,
+      "style_url": "https://www.dummyscan.com/system/wp-content/themes/shanghai/style.css",
+      "style_name": "Shanghai Mansion",
+      "style_uri": null,
+      "description": "Designed for Wordpress 4.x.x",
+      "author": "Studio 7",
+      "author_uri": null,
+      "template": null,
+      "license": null,
+      "license_uri": null,
+      "tags": null,
+      "text_domain": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 72,
+      "interesting_entries": [
+  
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 30,
+          "interesting_entries": [
+  
+          ]
+        }
+      },
+      "vulnerabilities": [
+  
+      ],
+      "version": {
+        "number": "1.0",
+        "confidence": 80,
+        "found_by": "Style (Passive Detection)",
+        "interesting_entries": [
+          "https://www.dummyscan.com/system/wp-content/themes/shanghai/style.css, Match: 'Version: 1.0'"
+        ],
+        "confirmed_by": {
+  
+        }
+      },
+      "parents": [
+  
+      ]
+    },
+    "plugins": {
+      "contact-form-7": {
+        "slug": "contact-form-7",
+        "location": "https://www.dummyscan.com/system/wp-content/plugins/contact-form-7/",
+        "latest_version": "5.4.1",
+        "last_updated": "2021-04-29T05:37:00.000Z",
+        "outdated": true,
+        "readme_url": null,
+        "directory_listing": null,
+        "error_log_url": null,
+        "found_by": "Urls In Homepage (Passive Detection)",
+        "confidence": 100,
+        "interesting_entries": [
+  
+        ],
+        "confirmed_by": {
+          "Urls In 404 Page (Passive Detection)": {
+            "confidence": 80,
+            "interesting_entries": [
+  
+            ]
+          }
+        },
+        "vulnerabilities": [
+          {
+            "title": "Contact Form 7 <= 5.0.3 - register_post_type() Privilege Escalation",
+            "fixed_in": "5.0.4",
+            "references": {
+              "cve": [
+                "2018-20979"
+              ],
+              "url": [
+                "https://contactform7.com/2018/09/04/contact-form-7-504/",
+                "https://plugins.trac.wordpress.org/changeset/1935726/contact-form-7",
+                "https://plugins.trac.wordpress.org/changeset/1934594/contact-form-7",
+                "https://plugins.trac.wordpress.org/changeset/1934343/contact-form-7",
+                "https://plugins.trac.wordpress.org/changeset/1934327/contact-form-7",
+                "https://www.ripstech.com/php-security-calendar-2018/#day-18"
+              ],
+              "wpvulndb": [
+                "af945f64-9ce2-485c-bf36-c2ff59dc10d5"
+              ]
+            }
+          },
+          {
+            "title": "Contact Form 7 < 5.3.2 - Unrestricted File Upload",
+            "fixed_in": "5.3.2",
+            "references": {
+              "cve": [
+                "2020-35489"
+              ],
+              "url": [
+                "https://www.getastra.com/blog/911/plugin-exploit/contact-form-7-unrestricted-file-upload-vulnerability/",
+                "https://www.jinsonvarghese.com/unrestricted-file-upload-in-contact-form-7/",
+                "https://contactform7.com/2020/12/17/contact-form-7-532/#more-38314"
+              ],
+              "wpvulndb": [
+                "7391118e-eef5-4ff8-a8ea-f6b65f442c63"
+              ]
+            }
+          }
+        ],
+        "version": {
+          "number": "4.7",
+          "confidence": 100,
+          "found_by": "Query Parameter (Passive Detection)",
+          "interesting_entries": [
+            "https://www.dummyscan.com/system/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.7"
+          ],
+          "confirmed_by": {
+            "Readme - Stable Tag (Aggressive Detection)": {
+              "confidence": 80,
+              "interesting_entries": [
+                "https://www.dummyscan.com/system/wp-content/plugins/contact-form-7/readme.txt"
+              ]
+            },
+            "Readme - ChangeLog Section (Aggressive Detection)": {
+              "confidence": 50,
+              "interesting_entries": [
+                "https://www.dummyscan.com/system/wp-content/plugins/contact-form-7/readme.txt"
+              ]
+            }
+          }
+        }
+      },
+      "cookie-law-info": {
+        "slug": "cookie-law-info",
+        "location": "https://www.dummyscan.com/system/wp-content/plugins/cookie-law-info/",
+        "latest_version": "2.0.3",
+        "last_updated": "2021-05-26T13:08:00.000Z",
+        "outdated": true,
+        "readme_url": null,
+        "directory_listing": null,
+        "error_log_url": null,
+        "found_by": "Urls In Homepage (Passive Detection)",
+        "confidence": 100,
+        "interesting_entries": [
+  
+        ],
+        "confirmed_by": {
+          "Urls In 404 Page (Passive Detection)": {
+            "confidence": 80,
+            "interesting_entries": [
+  
+            ]
+          }
+        },
+        "vulnerabilities": [
+  
+        ],
+        "version": {
+          "number": "2.0.1",
+          "confidence": 100,
+          "found_by": "Query Parameter (Passive Detection)",
+          "interesting_entries": [
+            "https://www.dummyscan.com/system/wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public.js?ver=2.0.1"
+          ],
+          "confirmed_by": {
+            "Readme - Stable Tag (Aggressive Detection)": {
+              "confidence": 80,
+              "interesting_entries": [
+                "https://www.dummyscan.com/system/wp-content/plugins/cookie-law-info/readme.txt"
+              ]
+            },
+            "Readme - ChangeLog Section (Aggressive Detection)": {
+              "confidence": 50,
+              "interesting_entries": [
+                "https://www.dummyscan.com/system/wp-content/plugins/cookie-law-info/readme.txt"
+              ]
+            }
+          }
+        }
+      },
+      "wordpress-seo": {
+        "slug": "wordpress-seo",
+        "location": "https://www.dummyscan.com/system/wp-content/plugins/wordpress-seo/",
+        "latest_version": "16.5",
+        "last_updated": "2021-06-15T06:39:00.000Z",
+        "outdated": true,
+        "readme_url": null,
+        "directory_listing": null,
+        "error_log_url": null,
+        "found_by": "Comment (Passive Detection)",
+        "confidence": 30,
+        "interesting_entries": [
+  
+        ],
+        "confirmed_by": {
+  
+        },
+        "vulnerabilities": [
+  
+        ],
+        "version": {
+          "number": "4.2.1",
+          "confidence": 100,
+          "found_by": "Comment (Passive Detection)",
+          "interesting_entries": [
+            "https://www.dummyscan.com/, Match: 'optimized with the Yoast SEO plugin v4.2.1 -'"
+          ],
+          "confirmed_by": {
+            "Readme - Stable Tag (Aggressive Detection)": {
+              "confidence": 80,
+              "interesting_entries": [
+                "https://www.dummyscan.com/system/wp-content/plugins/wordpress-seo/readme.txt"
+              ]
+            },
+            "Readme - ChangeLog Section (Aggressive Detection)": {
+              "confidence": 50,
+              "interesting_entries": [
+                "https://www.dummyscan.com/system/wp-content/plugins/wordpress-seo/readme.txt"
+              ]
+            }
+          }
+        }
+      },
+      "wysija-newsletters": {
+        "slug": "wysija-newsletters",
+        "location": "https://www.dummyscan.com/system/wp-content/plugins/wysija-newsletters/",
+        "latest_version": "2.14",
+        "last_updated": "2020-07-22T10:40:00.000Z",
+        "outdated": true,
+        "readme_url": null,
+        "directory_listing": null,
+        "error_log_url": null,
+        "found_by": "Urls In Homepage (Passive Detection)",
+        "confidence": 100,
+        "interesting_entries": [
+  
+        ],
+        "confirmed_by": {
+          "Urls In 404 Page (Passive Detection)": {
+            "confidence": 80,
+            "interesting_entries": [
+  
+            ]
+          }
+        },
+        "vulnerabilities": [
+  
+        ],
+        "version": {
+          "number": "2.7.7",
+          "confidence": 80,
+          "found_by": "Readme - Stable Tag (Aggressive Detection)",
+          "interesting_entries": [
+            "https://www.dummyscan.com/system/wp-content/plugins/wysija-newsletters/readme.txt"
+          ],
+          "confirmed_by": {
+  
+          }
+        }
+      }
+    },
+    "config_backups": {
+  
+    },
+    "vuln_api": {
+      "plan": "free",
+      "requests_done_during_scan": 6,
+      "requests_remaining": 0
+    },
+    "stop_time": 1624031045,
+    "elapsed": 21,
+    "requests_done": 187,
+    "cached_requests": 6,
+    "data_sent": 66959,
+    "data_sent_humanised": "65.39 KB",
+    "data_received": 1328318,
+    "data_received_humanised": "1.267 MB",
+    "used_memory": 271695872,
+    "used_memory_humanised": "259.109 MB"
+  }
