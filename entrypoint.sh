@@ -5,8 +5,8 @@
 # $3 OPTIONS
 
 ARGS="-f json --url ${1}"
-[  -z "$2" ] && ARGS="${ARGS} --api-token=${2}"
-[  -z "$3" ] && ARGS="${ARGS} ${3}"
+[  -n "$2" ] && ARGS="${ARGS} --api-token=${2}"
+[  -n "$3" ] && ARGS="${ARGS} ${3}"
 
 WPSCAN=/usr/local/bundle/bin/wpscan
 
