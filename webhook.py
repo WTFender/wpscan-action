@@ -8,4 +8,5 @@ payload = {
     'text': 'testsetsetseting!'
 }
 
-requests.post(webhook, json=payload)
+r = requests.post(webhook, json=payload)
+print(r.status_code)

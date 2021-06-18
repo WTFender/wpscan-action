@@ -18,4 +18,4 @@ jobs:
           webhook: ${{ secrets.SLACK_WEBHOOK }}
       - name: Results
         run: |
-          echo "Result - ${{ steps.wpscan.outputs.result }}"
+          echo "${{ steps.wpscan.outputs.resultb64 }}"
