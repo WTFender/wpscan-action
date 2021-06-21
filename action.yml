@@ -14,7 +14,6 @@ inputs:
   webhook:
     description: 'Slack webhook URL'
     required: false
-    default: asdf
 outputs:
   result:
     description: 'JSON scan results'
@@ -27,3 +26,4 @@ runs:
     - ${{ inputs.url }}
     - ${{ inputs.token }}
     - ${{ inputs.options }}
+    - ${{ inputs.webhook }}
