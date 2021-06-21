@@ -20,8 +20,6 @@ RESULT_B64=$(echo $RESULT | base64)
 
 echo ::set-output name=result::$RESULT
 echo ::set-output name=resultb64::$RESULT_B64
-
-WEBHOOK=$4
-echo $WEBHOOK
-python3 -V
+echo $RESULT_B64
+echo $4
 #[  -n "$4" ] && python3 /webhook.py
