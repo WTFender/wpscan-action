@@ -1,8 +1,9 @@
 import requests
+import sys
 import os
 
 RESULT = os.getenv('RESULT')
-WEBHOOK = os.getenv('WEBHOOK')
+WEBHOOK = sys.argv[2]
 
 if WEBHOOK:
     payload = {
