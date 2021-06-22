@@ -6,16 +6,16 @@ OPTIONS=$3
 WEBHOOK=$4
 WEBHOOKOPTS=$5
 
-#ARGS="-f json --url ${URL}"
-#[  -n "$2" ] && ARGS="${ARGS} --api-token=${TOKEN}"
-#[  -n "$3" ] && ARGS="${ARGS} ${OPTIONS}"
-#
-#WPSCAN=/usr/local/bundle/bin/wpscan
-#
-#$WPSCAN --update
+ARGS="-f json --url ${URL}"
+[  -n "$2" ] && ARGS="${ARGS} --api-token=${TOKEN}"
+[  -n "$3" ] && ARGS="${ARGS} ${OPTIONS}"
 
-#RESULT=$($WPSCAN $ARGS)
-RESULT=$(cat /example.json)
+WPSCAN=/usr/local/bundle/bin/wpscan
+
+$WPSCAN --update
+
+#RESULT=$(cat /example.json)
+RESULT=$($WPSCAN $ARGS)
 RESULT_B64=$(echo $RESULT | base64)
 
 echo ::set-output name=result::$RESULT
