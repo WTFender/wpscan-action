@@ -58,7 +58,7 @@ def vulns():
         vuln = parseVuln(v)
         vuln['fields'].append({
                         'title': 'Version',
-                        'value': RESULT['version']['number'],
+                        'value': f"{RESULT['version']['number']} ({RESULT['version']['confidence']}%)",
                         'short': True
                     })
         attachments.append(vuln)
@@ -67,7 +67,7 @@ def vulns():
         vuln = parseVuln(v)
         vuln['fields'].append({
                         'title': 'Version',
-                        'value': RESULT['main_theme']['version']['number'],
+                        'value': f"{RESULT['main_theme']['version']['number']} ({RESULT['main_theme']['version']['confidence']}%)",
                         'short': True
                     })
         attachments.append(vuln)
@@ -75,10 +75,9 @@ def vulns():
     for p in RESULT['plugins']:
         for v in RESULT['plugins'][p]['vulnerabilities']:
             vuln = parseVuln(v)
-            version = f"{RESULT['plugins'][p]['version']['number']} ({RESULT['plugins'][p]['version']['confidence']}%)"
             vuln['fields'].append({
                         'title': 'Version',
-                        'value': version,
+                        'value': f"{RESULT['plugins'][p]['version']['number']} ({RESULT['plugins'][p]['version']['confidence']}%)",
                         'short': True
                     })
             attachments.append(vuln)
