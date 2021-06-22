@@ -115,6 +115,3 @@ if __name__ == '__main__':
         # Send webhook
         r = requests.post(WEBHOOK, json=payload)
         print(f'Webhook: %s' % r.status_code)
-
-    print(event)
-    print(WEBHOOKEVENTS)
