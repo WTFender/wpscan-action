@@ -14,7 +14,7 @@ def scan():
     print('Scan completed')
     return {
         'username': 'WPScan',
-        'text': 'Scan completed',
+        'text': 'Scan completed for %s' % RESULT['target_url'],
         'color': 'success'
     }
 
@@ -22,7 +22,7 @@ def scan():
 def abort():
     return {
         'username': 'WPScan',
-        'text': 'Scan Aborted',
+        'text': 'Scan aborted for %s' % RESULT['target_url'],
         'color': 'danger'
     }
 
