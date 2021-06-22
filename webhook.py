@@ -11,31 +11,29 @@ RESULT = json.loads(base64.b64decode(RESULTB64).decode('utf-8'))
 
 
 def scan():
+    print('Scan completed')
     return {'text': 'Scan completed'}
-
+    
 def abort():
+    print('Scan aborted')
     return {'text': 'Scan aborted'}
 
-def vulns():
-    return {'text': 'Vulns found'}
-
-
-
-if not WEBHOOK:
-    exit('No webhook')   
+def vulns(n):
+    print('Vulns found')
+    return {'text': '%s vulns found' % n}
     
+
 if 'scan_aborted' in RESULT:
-    requests.post(WEBHOOK, json=abort())
-    exit('Scan aborted')
+    payload = abort()
 
 VULNS = ( len(RESULT['version']['vulnerabilities']) +
         len(RESULT['main_theme']['vulnerabilities']) + 
         sum([len(RESULT['plugins'][p]['vulnerabilities']) for p in RESULT['plugins']]) )
 
 if VULNS:
-    requests.post(WEBHOOK, json=vulns())
-    exit('Vulns found')
+    payload = vulns(VULNS)
 
-if WEBHOOKOPTS:
-    requests.post(WEBHOOK, json=scan())
-    exit('Scan completed')
+if WEBHOOK:
+    r = requests.post(WEBHOOK, json=payload)
+    print(f'Webhook: %s' % r.status_code)
+    
