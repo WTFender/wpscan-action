@@ -6,7 +6,7 @@ import sys
 
 RESULTB64 = sys.argv[1]
 WEBHOOK = sys.argv[2]
-WEBHOOKOPTS = sys.argv[3]
+WEBHOOKEVENTS = sys.argv[3].split(',')
 RESULT = json.loads(base64.b64decode(RESULTB64).decode('utf-8'))
 
 
@@ -90,12 +90,16 @@ def vulns():
 
 if __name__ == '__main__':
 
+    event = None
+
     # Aborted scan
     if 'scan_aborted' in RESULT:
+        event = 'aborted'
         payload = abort()
     
     # Completed scan
     else:
+        event = 'completed'
         payload = scan()
 
         VULNS = ( len(RESULT['version']['vulnerabilities']) +
@@ -104,9 +108,13 @@ if __name__ == '__main__':
 
         # Vulns found
         if VULNS:
+            event = 'vulns'
             payload = vulns()
 
-    if WEBHOOK:
+    if WEBHOOK and event in WEBHOOKEVENTS:
         # Send webhook
         r = requests.post(WEBHOOK, json=payload)
         print(f'Webhook: %s' % r.status_code)
+
+    print(event)
+    print(WEBHOOKEVENTS)

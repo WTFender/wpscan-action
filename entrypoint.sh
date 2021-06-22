@@ -4,7 +4,7 @@ URL=$1
 TOKEN=$2
 OPTIONS=$3
 WEBHOOK=$4
-WEBHOOKOPTS=$5
+WEBHOOKEVENT=$5
 
 ARGS="-f json --url ${URL}"
 [  -n "$2" ] && ARGS="${ARGS} --api-token=${TOKEN}"
@@ -21,4 +21,4 @@ RESULT_B64=$(echo $RESULT | base64)
 echo ::set-output name=result::$RESULT
 echo ::set-output name=resultb64::$RESULT_B64
 
-python3 /webhook.py "${RESULT_B64}" "${WEBHOOK}" "${WEBHOOKOPTS}"
+python3 /webhook.py "${RESULT_B64}" "${WEBHOOK}" "${WEBHOOKEVENT}"

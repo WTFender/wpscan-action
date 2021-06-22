@@ -14,6 +14,10 @@ inputs:
   webhook:
     description: 'Slack webhook URL'
     required: false
+  webhookevent:
+    description: 'Send webhook on scan event (CSV): vulns,aborted,completed'
+    required: false
+    default: vulns,aborted
 outputs:
   result:
     description: 'JSON scan results'
@@ -27,3 +31,4 @@ runs:
     - ${{ inputs.token }}
     - ${{ inputs.options }}
     - ${{ inputs.webhook }}
+    - ${{ inputs.webhookevent }}
