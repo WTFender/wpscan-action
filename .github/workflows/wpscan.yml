@@ -14,5 +14,5 @@ jobs:
         id: wpscan
         with:
           url: 'https://www.shanghaimansion.com/'
-#          token: ${{ secrets.WPSCAN_TOKEN }}
+          token: ${{ secrets.WPSCAN_TOKEN }}
           webhook: ${{ secrets.SLACK_WEBHOOK }}
