@@ -3,22 +3,31 @@ import base64
 import json
 import sys
 
+
 RESULTB64 = sys.argv[1]
 WEBHOOK = sys.argv[2]
 WEBHOOKOPTS = sys.argv[3]
-
 RESULT = json.loads(base64.b64decode(RESULTB64).decode('utf-8'))
 
 
 def scan():
     print('Scan completed')
-    return {'text': 'Scan completed', 'color': 'success'}
-    
-def abort():
-    print('Scan aborted')
-    return {'text': 'Scan aborted', 'color': 'warning'}
+    return {
+        'username': 'WPScan',
+        'text': 'Scan completed',
+        'color': 'success'
+    }
 
-def vulns(n):
+
+def abort():
+    return {
+        'username': 'WPScan',
+        'text': 'Scan Aborted',
+        'color': 'danger'
+    }
+
+
+def vulns():
     print('Vulns found')
     attachments = []
 
@@ -64,21 +73,29 @@ def vulns(n):
 
     return {
         'username': 'WPScan',
-        'text': 'Vulnerabilities found',
+        'text': 'Vulnerabilities found for %s' % RESULT['target_url'],
         'attachments': attachments
     }
+
+if __name__ == '__main__':
+
+    # Aborted scan
+    if 'scan_aborted' in RESULT:
+        payload = abort()
     
+    # Completed scan
+    else:
+        payload = scan()
 
-if 'scan_aborted' in RESULT:
-    payload = abort()
+        VULNS = ( len(RESULT['version']['vulnerabilities']) +
+                len(RESULT['main_theme']['vulnerabilities']) + 
+                sum([len(RESULT['plugins'][p]['vulnerabilities']) for p in RESULT['plugins']]) )
 
-VULNS = ( len(RESULT['version']['vulnerabilities']) +
-        len(RESULT['main_theme']['vulnerabilities']) + 
-        sum([len(RESULT['plugins'][p]['vulnerabilities']) for p in RESULT['plugins']]) )
+        # Vulns found
+        if VULNS:
+            payload = vulns()
 
-if VULNS:
-    payload = vulns(VULNS)
-
-if WEBHOOK:
-    r = requests.post(WEBHOOK, json=payload)
-    print(f'Webhook: %s' % r.status_code)
+    if WEBHOOK:
+        # Send webhook
+        r = requests.post(WEBHOOK, json=payload)
+        print(f'Webhook: %s' % r.status_code)
