@@ -127,24 +127,56 @@
       }
     ],
     "version": {
-      "number": "5.1.10",
-      "release_date": "2021-05-13",
-      "status": "latest",
+      "number": "4.4.1",
+      "release_date": "2016-01-06",
+      "status": "insecure",
       "found_by": "Emoji Settings (Passive Detection)",
       "confidence": 100,
       "interesting_entries": [
-        "https://www.dummyscan.com/, Match: '-release.min.js?ver=5.1.10'"
+        "https://www.newsecuritybeat.org/, Match: 'wp-includes\\/js\\/wp-emoji-release.min.js?ver=4.4.1'"
       ],
       "confirmed_by": {
-        "Most Common Wp Includes Query Parameter In Homepage (Passive Detection)": {
-          "confidence": 40,
+        "Meta Generator (Passive Detection)": {
+          "confidence": 60,
           "interesting_entries": [
-            "https://www.dummyscan.com/system/wp-includes/js/wp-embed.min.js?ver=5.1.10"
+            "https://www.newsecuritybeat.org/, Match: 'WordPress 4.4.1'"
           ]
         }
       },
       "vulnerabilities": [
-  
+        {
+          "title": "WordPress 3.7-4.4.1 - Local URIs Server Side Request Forgery (SSRF)",
+          "fixed_in": "4.4.2",
+          "references": {
+            "cve": [
+              "2016-2222"
+            ],
+            "url": [
+              "https://wordpress.org/news/2016/02/wordpress-4-4-2-security-and-maintenance-release/",
+              "https://core.trac.wordpress.org/changeset/36435",
+              "https://hackerone.com/reports/110801"
+            ],
+            "wpvulndb": [
+              "b19b6a22-3ebf-488d-b394-b578cd23c959"
+            ]
+          }
+        },
+        {
+          "title": "WordPress 3.7-4.4.1 - Open Redirect",
+          "fixed_in": "4.4.2",
+          "references": {
+            "cve": [
+              "2016-2221"
+            ],
+            "url": [
+              "https://wordpress.org/news/2016/02/wordpress-4-4-2-security-and-maintenance-release/",
+              "https://core.trac.wordpress.org/changeset/36444"
+            ],
+            "wpvulndb": [
+              "8fba3ea1-553c-4426-ad00-03cc258bff3f"
+            ]
+          }
+        }
       ]
     },
     "main_theme": {

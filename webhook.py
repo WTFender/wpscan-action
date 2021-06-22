@@ -31,44 +31,56 @@ def vulns():
     print('Vulns found')
     attachments = []
 
-    #for v in RESULT['version']['vulnerabilities']:
-    #    pass
-    #
-    #for v in RESULT['main_theme']['vulnerabilities']:
-    #    pass
+    def parseVuln(v):
+        vuln = {
+            "color": "danger",
+            "fallback": v['title'],
+            "title": v['title'],
+            "fields": []
+            }
+        if 'url' in v['references']:
+            vuln['title_link'] = v['references']['url'][0]
+        if 'cve' in v['references']:
+            cve = 'CVE-'+v['references']['cve'][0]
+            vuln['author_name'] = cve
+            vuln['author_link'] = 'https://cve.mitre.org/cgi-bin/cvename.cgi?name='+cve
+        if 'fixed_in' in v:
+            vuln['fields'].append(
+                {
+                    'title': 'Fixed Version',
+                    'value': v['fixed_in'],
+                    'short': True
+                }
+            )
+        return vuln
+
+    for v in RESULT['version']['vulnerabilities']:
+        vuln = parseVuln(v)
+        vuln['fields'].append({
+                        'title': 'Version',
+                        'value': RESULT['version']['number'],
+                        'short': True
+                    })
+        attachments.append(vuln)
+    
+    for v in RESULT['main_theme']['vulnerabilities']:
+        vuln = parseVuln(v)
+        vuln['fields'].append({
+                        'title': 'Version',
+                        'value': RESULT['main_theme']['version']['number'],
+                        'short': True
+                    })
+        attachments.append(vuln)
     
     for p in RESULT['plugins']:
         for v in RESULT['plugins'][p]['vulnerabilities']:
+            vuln = parseVuln(v)
             version = f"{RESULT['plugins'][p]['version']['number']} ({RESULT['plugins'][p]['version']['confidence']}%)"
-            vuln = {
-                "color": "danger",
-                "fallback": v['title'],
-                "title": v['title'],
-                "fields": [
-                    {
+            vuln['fields'].append({
                         'title': 'Version',
                         'value': version,
                         'short': True
-                    }
-                ]
-            }
-            
-            if 'url' in v['references']:
-                vuln['title_link'] = v['references']['url'][0]
-
-            if 'cve' in v['references']:
-                cve = 'CVE-'+v['references']['cve'][0]
-                vuln['author_name'] = cve
-                vuln['author_link'] = 'https://cve.mitre.org/cgi-bin/cvename.cgi?name='+cve
-
-            if 'fixed_in' in v:
-                vuln['fields'].append(
-                    {
-                        'title': 'Fixed Version',
-                        'value': v['fixed_in'],
-                        'short': True
-                    }
-                )
+                    })
             attachments.append(vuln)
 
     return {
