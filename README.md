@@ -8,7 +8,7 @@ Scan a URL with `wpscan`, a [WordPress vulnerability scanner](https://wpscan.com
 
 #### Run a scan
 ```yaml
-uses: WTFender/wpscan-action
+uses: WTFender/wpscan-action@v1.0
 with:
   url: 'https://WORDPRESS_SITE/'
 ```
