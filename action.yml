@@ -1,5 +1,8 @@
 name: 'WPScan-action'
 description: 'WPScan a URL'
+branding:
+  color: red
+  icon: target
 inputs:
   url:
     description: 'Target URL to scan'
