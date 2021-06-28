@@ -66,3 +66,8 @@ JSON scan results.
 ### `resultb64`
 
 JSON scan results, base64 encoded.
+
+
+## Webhook
+
+![.](./slack.PNG)
