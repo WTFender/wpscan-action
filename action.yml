@@ -1,4 +1,4 @@
-name: 'WPScan'
+name: 'WPScan-action'
 description: 'WPScan a URL'
 inputs:
   url:

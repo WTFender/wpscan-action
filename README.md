@@ -1,23 +1,48 @@
-# Hello world docker action
+# WPScan docker action
 
-This action prints "Hello World" to the log or "Hello" + the name of a person to greet. To learn how this action was built, see "[Creating a Docker container action](https://help.github.com/en/articles/creating-a-docker-container-action)" in the GitHub Help documentation.
+Scan a URL with `wpscan`, a WordPress vulnerability scanner. JSON scan results are returned to the next step and/or sent to Slack.
+
+https://wpscan.com/
+
 
 ## Inputs
 
-### `who-to-greet`
+### `url`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required**. Scan target URL.
+
+### `token`
+
+API token for wpscan.com. Required for vulnerability data.
+
+### `options`
+
+WPScan CLI options.  Default `--disable-tls-checks`.
+
+### `webhook`
+
+Slack webhook URL.
+
+### `webhookevent`
+
+Events to send webhook on: Default `vulns,aborted`. Allowed `vulns,aborted,completed`.
 
 ## Outputs
 
-### `time`
+### `result`
 
-The time we greeted you.
+JSON scan results.
+
+### `resultb64`
+
+JSON scan results, base64 encoded.
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-docker-action@master
+uses: WTFender/wpscan-action
 with:
-  who-to-greet: 'Mona the Octocat'
+  url: 'https://WORDPRESS_SITE/'
+  token: ${{ secrets.WPSCAN_TOKEN }}
+  webhook: ${{ secrets.SLACK_WEBHOOK }}
 ```
