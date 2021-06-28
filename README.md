@@ -22,8 +22,6 @@ jobs:
   wpscan:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Local
-        uses: actions/checkout@v2
       - name: WPScan
         uses: WTFender/wpscan-action@v1.0
         id: wpscan
