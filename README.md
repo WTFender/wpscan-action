@@ -1,8 +1,8 @@
 # WPScan docker action
 
-Scan a URL with `wpscan`, a WordPress vulnerability scanner. JSON scan results are returned to the next step and/or sent to Slack.
+Scan a URL with `wpscan`, a [WordPress vulnerability scanner](https://wpscan.com/).
 
-https://wpscan.com/
+
 
 ## Examples
 
