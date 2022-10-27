@@ -18,7 +18,7 @@ $WPSCAN --update
 RESULT=$($WPSCAN $ARGS)
 RESULT_B64=$(echo $RESULT | base64)
 
-echo ::set-output name=result::$RESULT
-echo ::set-output name=resultb64::$RESULT_B64
+echo "result=$RESULT" >> $GITHUB_OUTPUT
+echo "resultb64=$RESULT_B64" >> $GITHUB_OUTPUT
 
 python3 /webhook.py "${RESULT_B64}" "${WEBHOOK}" "${WEBHOOKEVENT}"
