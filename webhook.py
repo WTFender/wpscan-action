@@ -75,9 +75,14 @@ def vulns():
     for p in RESULT['plugins']:
         for v in RESULT['plugins'][p]['vulnerabilities']:
             vuln = parseVuln(v)
+            # Edge case where the WPScan is not able to identify the plugin version
+            if not (RESULT['plugins'][p]['version'] is None):
+                version = f"{RESULT['plugins'][p]['version']['number']} ({RESULT['plugins'][p]['version']['confidence']}%)"
+            else:
+                version = "Unknown"
             vuln['fields'].append({
                         'title': 'Version',
-                        'value': f"{RESULT['plugins'][p]['version']['number']} ({RESULT['plugins'][p]['version']['confidence']}%)",
+                        'value': f"{version}",
                         'short': True
                     })
             attachments.append(vuln)

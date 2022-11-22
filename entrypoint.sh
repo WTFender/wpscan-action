@@ -15,10 +15,18 @@ WPSCAN=/usr/local/bundle/bin/wpscan
 $WPSCAN --update
 
 #RESULT=$(cat /example.json)
-RESULT=$($WPSCAN $ARGS)
+RESULT=$($WPSCAN $ARGS -o result.json; cat result.json)
 RESULT_B64=$(echo $RESULT | base64)
 
-echo "result=$RESULT" >> $GITHUB_OUTPUT
-echo "resultb64=$RESULT_B64" >> $GITHUB_OUTPUT
+cat result.json | grep -i limit
+echo "result<<EOF" >> $GITHUB_OUTPUT
+echo "$RESULT" >> $GITHUB_OUTPUT
+echo "EOF" >> $GITHUB_OUTPUT
+
+
+echo "resultb64<<EOF" >> $GITHUB_OUTPUT
+echo "$RESULT_B64" >> $GITHUB_OUTPUT
+echo "EOF" >> $GITHUB_OUTPUT
+
 
 python3 /webhook.py "${RESULT_B64}" "${WEBHOOK}" "${WEBHOOKEVENT}"
