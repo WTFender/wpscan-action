@@ -70,4 +70,4 @@ JSON scan results, base64 encoded.
 
 ## Webhook
 
-![.](./slack.PNG)
+![.](misc/slack.PNG)

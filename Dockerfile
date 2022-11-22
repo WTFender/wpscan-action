@@ -1,8 +1,9 @@
 FROM wpscanteam/wpscan
-COPY entrypoint.sh /entrypoint.sh
-COPY example.json /example.json
-COPY webhook.py /webhook.py
+WORKDIR /code
 USER root
 RUN apk add curl python3 py3-pip
-RUN pip3 install requests
-ENTRYPOINT ["/entrypoint.sh"]
+COPY src/requirements.txt .
+RUN pip3 install -r requirements.txt
+COPY src .
+ENTRYPOINT [ "/bin/sh" ]
+CMD ["entrypoint.sh"]

@@ -29,9 +29,8 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    SLACK_WEBHOOK_URL: ${{ inputs.webhook }}
+    WP_SCAN_API_TOKEN: ${{ inputs.token }}
   args:
     - ${{ inputs.url }}
-    - ${{ inputs.token }}
-    - ${{ inputs.options }}
-    - ${{ inputs.webhook }}
-    - ${{ inputs.webhookevent }}
